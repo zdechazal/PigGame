@@ -8,7 +8,7 @@ from Human import Human
 
 
 def computer_mode_start():
-    print()
+    print("test")
     Displays.printBotMenu()
 
     difficultyLevel = input("Enter your choice (1 to 4): ")
