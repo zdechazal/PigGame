@@ -16,6 +16,7 @@ class Turn:
 
 
     def play_turn(self):
+        
         print(f"\n{self.player.username}'s turn to play")
         self.player.turn_total = 0
         keep_rolling = True
@@ -32,7 +33,10 @@ class Turn:
             if self.player.game_score + self.player.turn_total >= 15 : break
             keep_rolling = self.player.is_rolling()
 
-            if keep_rolling != True: 
+            if keep_rolling == "h": 
+                self.player.turn_total = 0
                 break
+            elif keep_rolling == "q":
+                return -1
 
         return self.player.turn_total

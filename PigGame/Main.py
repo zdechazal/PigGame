@@ -7,17 +7,14 @@ from Human import Human
 
 
 
-def computer_mode_start():
-    print("test")
+def computer_mode_start(player_one):
     Displays.printBotMenu()
 
     difficultyLevel = input("Enter your choice (1 to 4): ")
-    player1Name = input("\nEnter the name of player one: ")
-    playerOne = Human(player1Name)
 
     if difficultyLevel in {"1", "2", "3"}:
-        playerTwo = Computer(difficultyLevel)
-        pigGame = Game(playerOne, playerTwo)  # starts a game with a username and difficulty lvl
+        player_two = Computer(difficultyLevel)
+        pigGame = Game(player_one, player_two)  # starts a game with a username and difficulty lvl
         pigGame.start_game()
 
     elif difficultyLevel == "4":
@@ -26,13 +23,12 @@ def computer_mode_start():
     else:
         print("Enter a valid choice")
 
-def player_mode_start():
-    player1Name = input("\nEnter the name of player one: ")
-    player2Name = input("Enter the name of player two: ")
-    playerOne = Human(player1Name)
-    playerTwo = Human(player2Name)
+def player_mode_start(player_one):
+    
+    player2_name = input("Enter the name of player two: ")
+    player_two = Human(player2_name)
 
-    pigGame = Game(playerOne, playerTwo)
+    pigGame = Game(player_one, player_two)
     pigGame.start_game()
 
 def user_options():
@@ -50,6 +46,10 @@ def user_options():
             playerOne.changeUsername(newUsername)'''
     
 def main():
+    
+    
+    player1_name = input("\nEnter the name of player one: ")
+    player_one = Human(player1_name)
 
     while True:
         Displays.printMenu()
@@ -57,23 +57,21 @@ def main():
 
         match choice:
             case "1":
-                computer_mode_start()
+                computer_mode_start(player_one)
 
             case "2":
-                player_mode_start()
+                player_mode_start(player_one)
 
             case "3":
                 pass #HighScore.displayScores(playerName)
 
             case "4":
-                user_options()
-
+                print(player_one.games_played)
             case "5":
                 Displays.printRules()
 
             case "6":
-                break
-
+                exit()
             case default:
                 print("Enter a valid")
 
