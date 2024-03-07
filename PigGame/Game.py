@@ -3,7 +3,6 @@ from Human import Human
 from Computer import Computer
 
 class Game:
-    winning_score = 100
     def __init__(self, player_one, player_two):
         self.player_one = player_one
         self.player_two = player_two
@@ -34,7 +33,7 @@ class Game:
 
     
     def has_won(self, player):
-        if player.game_score >= Game.winning_score:
+        if player.game_score >= 40:
            print(f"\n{player.username} has won!!!")
            return True
         return False
