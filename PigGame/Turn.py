@@ -34,7 +34,6 @@ class Turn:
             keep_rolling = self.player.is_rolling()
 
             if keep_rolling == "h": 
-                self.player.turn_total = 0
                 break
             elif keep_rolling == "q":
                 return -1
