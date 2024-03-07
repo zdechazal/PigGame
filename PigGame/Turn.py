@@ -1,5 +1,4 @@
 from random import randint
-import Game
 
 class Turn:
     def __init__(self, player):
