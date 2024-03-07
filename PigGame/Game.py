@@ -22,9 +22,7 @@ class Game:
                 self.add_user_stats(player)
                 self.reset_game_score()
                 break
-            player = self.switch_player(player)
-        
-        
+            player = self.switch_player(player)     
             
 
     def switch_player(self, player):
@@ -41,19 +39,18 @@ class Game:
         return False
     
     def add_user_stats(self, player):
-
-        if player == self.player_one and self.player_two is Human:
+        if player == self.player_one and isinstance(self.player_two,Human):
             self.player_one.games_won += 1
             self.player_one.games_played += 1
             self.player_two.games_played += 1
-        elif player == self.player_one and self.player_two is Computer:
+        elif player == self.player_one and isinstance(self.player_two, Computer):
             self.player_one.games_won += 1
             self.player_one.games_played += 1
-        elif player == self.player_two and player is Human:
+        elif player == self.player_two and isinstance(player ,Human):
             self.player_two.games_won += 1
             self.player_two.games_played += 1
             self.player_one.games_played += 1
-        elif player == self.player_two and player is Computer:
+        elif player == self.player_two and isinstance(player ,Computer):
             self.player_one.games_played += 1
 
     def reset_game_score(self):

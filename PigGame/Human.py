@@ -17,3 +17,12 @@ class Human:
             return "q"
         else:
             print("Enter r or h!")
+
+    def add_game(self):
+        self.games_played += 1
+
+    def add_win(self):
+        self.games_won += 1
+
+    def change_name(self,new_name):
+        self.change_name = new_name

@@ -6,7 +6,7 @@ class Turn:
 
     
     def roll_dice(self):
-        return randint(1, 6)  # Adjusted to 6-sided dice
+        return randint(1, 6)
 
     def is_one(self, roll_value):
         if roll_value == 1:
@@ -24,9 +24,7 @@ class Turn:
             roll_value = self.roll_dice()
 
             print(f"\n{self.player.username} rolls a {roll_value}")
-            if self.is_one(roll_value): break  # Breaks loop if is_one returns True
-
-            
+            if self.is_one(roll_value): break 
             
             self.player.turn_total += roll_value
             print(f"{self.player.username}'s current turn total is {self.player.turn_total}")           

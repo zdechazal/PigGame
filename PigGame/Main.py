@@ -66,7 +66,7 @@ def main():
                 pass #HighScore.displayScores(playerName)
 
             case "4":
-                print(player_one.games_played)
+                print(f"{player_one.username} has played {player_one.games_played} game(s) and won {player_one.games_won} game(s)")
             case "5":
                 Displays.printRules()
 
