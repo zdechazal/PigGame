@@ -39,7 +39,16 @@ class Game:
         return False
     
     def add_user_stats(self, player): #this could be simplified by giving the computer the games_won and games_played attributes
-        if player == self.player_one and isinstance(self.player_two,Human):
+        if player == self.player_one:
+            self.player_one.games_won += 1
+            self.player_one.games_played += 1
+            self.player_two.games_played += 1
+        elif player == self.player_two:
+            self.player_two.games_won += 1
+            self.player_two.games_played += 1
+            self.player_one.games_played += 1
+
+        '''if player == self.player_one and isinstance(self.player_two,Human):
             self.player_one.games_won += 1
             self.player_one.games_played += 1
             self.player_two.games_played += 1
@@ -51,8 +60,10 @@ class Game:
             self.player_two.games_played += 1
             self.player_one.games_played += 1
         elif player == self.player_two and isinstance(player ,Computer):
-            self.player_one.games_played += 1
+            self.player_one.games_played += 1'''
 
     def reset_game_score(self):
         self.player_one.game_score = 0
         self.player_two.game_score = 0
+        self.player_one.number_of_turns = 0
+        self.player_two.number_of_turns = 0

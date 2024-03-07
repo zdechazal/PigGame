@@ -5,6 +5,7 @@ class Human:
         self.game_score = 0
         self.games_played = 0
         self.games_won = 0
+        self.number_of_turns = 0
 
     def is_rolling(self):
         decision = input("Press r to roll or h to hold: ")
