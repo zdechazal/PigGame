@@ -1,6 +1,5 @@
 import pickle
 
-
 class Highscore:
     def __init__(self):
         self.all_player_list = []
@@ -17,11 +16,9 @@ class Highscore:
         if player not in self.all_player_list:
             self.all_player_list.append(player)
 
-
-    def save_scores(self): # saves all players
+    def save_scores(self):  # saves all players
         with open(self.filepath, "wb") as playerFile:
             pickle.dump(self.all_player_list, playerFile)
-
 
     def load_scores(self):  # loads player to list, if empty EOF exception makes empty list
         try:
@@ -35,12 +32,10 @@ class Highscore:
         except EOFError:
             self.all_player_list = []
 
-
     def sort_scores(self):  # used to parse top 10 scores
         if self.all_player_list:  # if list is not empty
             self.all_player_list.sort(key=lambda player: player.highscore)
             self.top_ten = self.all_player_list[0:10]
-
 
     def display_scores(self):  # used to print scores
         self.sort_scores()
