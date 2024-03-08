@@ -6,9 +6,8 @@ class Computer:
         self.difficulty = difficulty
         self.turn_total = 0
         self.game_score = 0
-        self.games_played = 0
-        self.games_won = 0
         self.number_of_turns = 0
+        self.highscore = 0
 
 
     def is_rolling(self):

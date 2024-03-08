@@ -34,11 +34,11 @@ class Highscore:
 
     def sort_scores(self):  # used to parse top 10 scores
         if self.all_player_list:  # if list is not empty
-            self.all_player_list.sort(key=lambda player: player.number_of_turns, reverse=True)
+            self.all_player_list.sort(key=lambda player: player.highscore)
             self.top_ten = self.all_player_list[0:10]
 
     def display_scores(self):  # used to print scores
         self.sort_scores()
         print("Highscores:")
         for player in self.top_ten:
-            print(f"{player.username}, {player.number_of_turns}")
+            print(f"{player.username}, {player.highscore}")
