@@ -1,11 +1,13 @@
 from Turn import Turn
 from Human import Human
 from Computer import Computer
+from Highscores import Highscore
 
 class Game:
-    def __init__(self, player_one, player_two, normal_mode = True):
+    def __init__(self, player_one, player_two, normal_mode, highscores_main):
         self.player_one = player_one
         self.player_two = player_two
+        self.highscores_main = highscores_main
         if normal_mode == True:
             self.winning_score = 40
         else:
@@ -20,10 +22,12 @@ class Game:
             if turn_result == -1: #player quit the game
                 self.reset_game_score()
                 break
+            player.number_of_turns += 1
             player.game_score += turn_result
             print(f"{player.username} has {player.game_score} total points")
             if self.has_won(player) == True:
-                self.add_user_stats(player)
+                self.check_if_player_highscore(player)
+                self.highscores_main.add_player_to_list(player)
                 self.reset_game_score()
                 break
             player = self.switch_player(player)
@@ -41,30 +45,12 @@ class Game:
            print(f"\n{player.username} has won!!!")
            return True
         return False
-    
-    def add_user_stats(self, player): #this could be simplified by giving the computer the games_won and games_played attributes
-        if player == self.player_one:
-            self.player_one.games_won += 1
-            self.player_one.games_played += 1
-            self.player_two.games_played += 1
-        elif player == self.player_two:
-            self.player_two.games_won += 1
-            self.player_two.games_played += 1
-            self.player_one.games_played += 1
 
-        '''if player == self.player_one and isinstance(self.player_two,Human):
-            self.player_one.games_won += 1
-            self.player_one.games_played += 1
-            self.player_two.games_played += 1
-        elif player == self.player_one and isinstance(self.player_two, Computer):
-            self.player_one.games_won += 1
-            self.player_one.games_played += 1
-        elif player == self.player_two and isinstance(player ,Human):
-            self.player_two.games_won += 1
-            self.player_two.games_played += 1
-            self.player_one.games_played += 1
-        elif player == self.player_two and isinstance(player ,Computer):
-            self.player_one.games_played += 1'''
+    
+    def check_if_player_highscore(self, player):
+        if player.highscore < player.number_of_turns:
+            player.highscore = player.number_of_turns
+
 
     def reset_game_score(self):
         self.player_one.game_score = 0

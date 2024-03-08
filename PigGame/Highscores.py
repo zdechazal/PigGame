@@ -13,7 +13,6 @@ class Highscore:
         # Added this so if the list is not empty, it loads. Must be loaded once only, at the very beginning.
         self.load_scores()
 
-
     def add_player_to_list(self, player):  # adds player to the list if it's not already
         if player not in self.all_player_list:
             self.all_player_list.append(player)
@@ -39,7 +38,7 @@ class Highscore:
 
     def sort_scores(self):  # used to parse top 10 scores
         if self.all_player_list:  # if list is not empty
-            self.all_player_list.sort(key=lambda player: player.turns, reverse=True)
+            self.all_player_list.sort(key=lambda player: player.highscore)
             self.top_ten = self.all_player_list[0:10]
 
 
@@ -47,4 +46,4 @@ class Highscore:
         self.sort_scores()
         print("Highscores:")
         for player in self.top_ten:
-            print(f"{player.username}, {player.turns}")
+            print(f"{player.username}, {player.highscore}")

@@ -3,18 +3,19 @@ from Game import Game
 from Computer import Computer
 from Computer import Computer
 from Human import Human
+from Highscores import Highscore
 
 
 
 
-def computer_mode_start(player_one, is_normal_mode):
+def computer_mode_start(player_one, is_normal_mode, highscores_main):
     Displays.printBotMenu()
 
     difficultyLevel = input("Enter your choice (1 to 4): ")
 
     if difficultyLevel in {"1", "2", "3"}:
         player_two = Computer(difficultyLevel)
-        pigGame = Game(player_one, player_two, is_normal_mode)  # starts a game with a username and difficulty lvl
+        pigGame = Game(player_one, player_two, is_normal_mode, highscores_main)  # starts a game with a username and difficulty lvl
         pigGame.start_game()
 
     elif difficultyLevel == "4":
@@ -23,12 +24,12 @@ def computer_mode_start(player_one, is_normal_mode):
     else:
         print("Enter a valid choice")
 
-def player_mode_start(player_one, is_normal_mode):
+def player_mode_start(player_one, is_normal_mode, highscores_main):
     
     player2_name = input("Enter the name of player two: ")
     player_two = Human(player2_name)
 
-    pigGame = Game(player_one, player_two, is_normal_mode)
+    pigGame = Game(player_one, player_two, is_normal_mode, highscores_main)
     pigGame.start_game()
 
 def get_play_mode():
@@ -45,7 +46,8 @@ def main():
     
     is_normal_mode = get_play_mode() #
     player1_name = input("\nEnter the name of player one: ")
-    player_one = Human(player1_name)               
+    player_one = Human(player1_name)
+    highscores_main = Highscore()          
 
 
     while True:
@@ -54,13 +56,13 @@ def main():
 
         match choice:
             case "1":
-                computer_mode_start(player_one, is_normal_mode)
+                computer_mode_start(player_one, is_normal_mode, highscores_main)
 
             case "2":
-                player_mode_start(player_one, is_normal_mode)
+                player_mode_start(player_one, is_normal_mode, highscores_main)
 
             case "3":
-                print(f"{player_one.username} has played {player_one.games_played} game(s) and won {player_one.games_won} game(s)")
+                highscores_main.display_scores()
 
             case "4":
                 new_username = input("\nNew username: ")
