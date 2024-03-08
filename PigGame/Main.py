@@ -72,6 +72,7 @@ def main():
             case "5":
                 Displays.printRules()
             case "6":
+                highscores_main.save_scores()
                 exit()
             case default:
                 print("Enter a valid choice!")
