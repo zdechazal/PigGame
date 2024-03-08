@@ -1,66 +1,42 @@
 import unittest
-import os
-from Highscores import Highscore
+from unittest.mock import patch
 from Human import Human
+from Turn import Turn
 
-
-class TestHighscore(unittest.TestCase):
+class TestTurn(unittest.TestCase):
     def setUp(self):
-        self.highscore = Highscore()
+        self.player = Human("Bob")
+        self.winning_score = 100
+        self.turn = Turn(self.player, self.winning_score)
 
-    def tearDown(self):
-        os.remove(self.highscore.filepath)
+    @patch("turn_module.randint", return_value=3)  # Mocking randint to always return 3
+    def test_roll_dice(self, mock_randint):
+        self.assertEqual(self.turn.roll_dice(), 3)
 
-    def test_add_player_to_list(self):
-        player1 = Human("Bob")
-        player2 = Human("Bob1")
-        player1.highscore = 100
-        player1.highscore = 200
+    def test_is_one(self):
+        self.player.turn_total = 0
+        self.assertTrue(self.turn.is_one(1))
+        self.assertEqual(self.player.turn_total, 0)
 
-        self.highscore.add_player_to_list(player1)
-        self.assertIn(player1, self.highscore.all_player_list)
+        self.player.turn_total = 10
+        self.assertFalse(self.turn.is_one(3))
+        self.assertEqual(self.player.turn_total, 10)
 
-        self.highscore.add_player_to_list(player1)
-        self.assertEqual(len(self.highscore.all_player_list), 1)
+    @patch("builtins.input", side_effect=["h"])  # Mocking user input to hold
+    def test_play_turn_hold(self, mock_input):
+        self.player.game_score = 50
+        self.player.turn_total = 20
+        self.assertEqual(self.turn.play_turn(), 20)
 
-        self.highscore.add_player_to_list(player2)
-        self.assertIn(player2, self.highscore.all_player_list)
+    @patch("builtins.input", side_effect=["r", "r", "h"])  # Mocking user input to roll, roll, hold
+    @patch("turn_module.randint", side_effect=[3, 4, 1])  # Mocking dice rolls to return 3, 4, 1
+    def test_play_turn_roll_hold(self, mock_randint, mock_input):
+        self.player.game_score = 50
+        self.assertEqual(self.turn.play_turn(), 8)  # 3 + 4 + 1 = 8
 
-    def test_save_and_load_scores(self):
-        player1 = Human("Bob")
-        player2 = Human("Bob1")
-        player1.highscore = 100
-        player2.highscore = 200
+    @patch("builtins.input", side_effect=["q"])  # Mocking user input to quit
+    def test_play_turn_quit(self, mock_input):
+        self.assertEqual(self.turn.play_turn(), -1)
 
-        self.highscore.add_player_to_list(player1)
-        self.highscore.add_player_to_list(player2)
-
-        self.highscore.save_scores()
-        new_highscore = Highscore()
-        new_highscore.load_scores()
-
-        self.assertEqual(len(new_highscore.all_player_list), 2)
-        self.assertIn(player1, new_highscore.all_player_list)
-        self.assertIn(player2, new_highscore.all_player_list)
-
-    def test_sort_scores(self):
-        player1 = Human("Bob")
-        player2 = Human("Bob1")
-        player3 = Human("Bob2")
-        player1.highscore = 100
-        player2.highscore = 300
-        player3.highscore = 200
-
-        self.highscore.add_player_to_list(player1)
-        self.highscore.add_player_to_list(player2)
-        self.highscore.add_player_to_list(player3)
-
-        self.highscore.sort_scores()
-
-        self.assertEqual(self.highscore.top_ten[0], player1)
-        self.assertEqual(self.highscore.top_ten[1], player3)
-        self.assertEqual(self.highscore.top_ten[2], player2)
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
