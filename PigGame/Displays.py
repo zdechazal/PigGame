@@ -1,5 +1,5 @@
 class Displays:
-    
+
     @staticmethod
     def printRules():
         rules = """
@@ -55,12 +55,12 @@ class Displays:
 
     @staticmethod
     def printPlayerOptions():
-        player_menu = '''
+        player_menu = """
         │ - - - - - - - - - - - - - │
         │     Player Options        │
         │ - - - - - - - - - - - - - │
         │ 1. Previous scores        │
         │ 2. Change name            │
         | 3. Back                   │
-        │ - - - - - - - - - - - - - │'''
+        │ - - - - - - - - - - - - - │"""
         print(player_menu)

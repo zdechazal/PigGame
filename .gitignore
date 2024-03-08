@@ -1,4 +1,4 @@
-/.venv/Lib/site-packages/pip/_vendor/packaging/__about__.py
+flak/.venv/Lib/site-packages/pip/_vendor/packaging/__about__.py
 /.venv/Lib/site-packages/pkg_resources/_vendor/packaging/__about__.py
 /.venv/Lib/site-packages/setuptools/_vendor/packaging/__about__.py
 /.venv/Lib/site-packages/_distutils_hack/__init__.py
@@ -761,3 +761,4 @@
 /.venv/Lib/site-packages/pip/_internal/network/xmlrpc.py
 /.venv/Lib/site-packages/pkg_resources/_vendor/zipp.py
 /.venv/Lib/site-packages/setuptools/_vendor/zipp.py
+/.venv/Lib/site-packages/pip/_vendor/packaging/__about__.py

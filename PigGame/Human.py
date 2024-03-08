@@ -10,7 +10,7 @@ class Human:
         decision = input("Press r to roll or h to hold: ")
         if decision == "r":
             return "r"
-        elif decision == "h":    
+        elif decision == "h":
             print(f"{self.username} holds")
             return "h"
         elif decision == "q":
