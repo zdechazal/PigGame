@@ -22,7 +22,7 @@ class Turn:
         self.player.turn_total = 0
         keep_rolling = True
         while keep_rolling:
-            roll_value = self.roll_dice()
+            roll_value = self.roll_dice()   
             print(f"\n{self.player.username} rolls a {roll_value}")
             
             if self.is_one(roll_value): break #checks if the roll result is a 1, sets turn_total to 0 and breaks out of the loop          
