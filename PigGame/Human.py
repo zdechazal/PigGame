@@ -18,3 +18,7 @@ class Human:
             return "q"
         else:
             print("Enter r or h!")
+
+    def change_username(self, new_username):
+        self.username = new_username
+        

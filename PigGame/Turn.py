@@ -1,7 +1,8 @@
 from random import randint
 
 class Turn:
-    def __init__(self, player):
+    def __init__(self, player, winning_score):
+        self.winning_score = winning_score
         self.player = player
 
     
@@ -28,7 +29,7 @@ class Turn:
             self.player.turn_total += roll_value
             print(f"{self.player.username}'s current turn total is {self.player.turn_total}")           
             
-            if self.player.game_score + self.player.turn_total >= 40 : break #checks if it has reached a winning score and breaks out of the loop
+            if self.player.game_score + self.player.turn_total >= self.winning_score : break #checks if it has reached a winning score and breaks out of the loop
             
             keep_rolling = self.player.is_rolling() #asks the player roll/hold/quit and returns r/h/q
 

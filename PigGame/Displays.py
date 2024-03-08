@@ -30,7 +30,7 @@ class Displays:
         │ 1. Play versus bot            │
         │ 2. Play with another player   │
         │ 3. Show highscores            |
-        | 4. Player options             │
+        | 4. Change username            │
         │ 5. Rules                      │
         │ 6. Quit                       │
         │ - - - - - - - - - - - - - - - │

@@ -3,15 +3,19 @@ from Human import Human
 from Computer import Computer
 
 class Game:
-    def __init__(self, player_one, player_two):
+    def __init__(self, player_one, player_two, normal_mode = True):
         self.player_one = player_one
         self.player_two = player_two
+        if normal_mode == True:
+            self.winning_score = 40
+        else:
+            self.winning_score = 10
 
 
     def start_game(self):
         player = self.player_one
         while True:
-            turn = Turn(player) 
+            turn = Turn(player, self.winning_score) 
             turn_result = turn.play_turn() #starts a player's turn
             if turn_result == -1: #player quit the game
                 self.reset_game_score()
@@ -33,7 +37,7 @@ class Game:
 
     
     def has_won(self, player):
-        if player.game_score >= 40:
+        if player.game_score >= self.winning_score:
            print(f"\n{player.username} has won!!!")
            return True
         return False
