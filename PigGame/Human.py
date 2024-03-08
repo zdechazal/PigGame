@@ -16,7 +16,7 @@ class Human:
         elif decision == "q":
             return "q"
         else:
-            print("Enter r or h!")
+            print("Enter valid input!")
 
     def change_username(self, new_username):
         self.username = new_username

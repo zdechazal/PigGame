@@ -28,6 +28,7 @@ def computer_mode_start(player_one, is_normal_mode, highscores_main):
 def player_mode_start(player_one, is_normal_mode, highscores_main):
 
     player2_name = input("Enter the name of player two: ")
+    player2_name = check_name(player2_name)
     player_two = Human(player2_name)
 
     pigGame = Game(player_one, player_two, is_normal_mode, highscores_main)
@@ -44,11 +45,21 @@ def get_play_mode():
         else:
             print("Incorrect input")
 
+def check_name(name):
+    if not name.isalnum():
+        return check_name(input("\nOnly letters and number allowed!"
+                         + "Enter the name again: \n"))
+    else: return name
+        
+
+
+
 
 def main():
 
     is_normal_mode = get_play_mode()  #
     player1_name = input("\nEnter the name of player one: ")
+    player1_name = check_name(player1_name)
     player_one = Human(player1_name)
     highscores_main = Highscore()
 
@@ -68,6 +79,7 @@ def main():
 
             case "4":
                 new_username = input("\nNew username: ")
+                new_username = check_name(new_username)
                 player_one.change_username(new_username)
             case "5":
                 Displays.printRules()

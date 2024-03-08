@@ -3,7 +3,7 @@ from Human import Human
 from unittest.mock import patch
 
 
-class TestPlayerMethods(unittest.TestCase):
+class TestHuman(unittest.TestCase):
     def setUp(self):
         # Create a Player instance for testing
         self.username = "test_user"
