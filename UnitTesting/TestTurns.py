@@ -1,8 +1,11 @@
 import unittest
+from PigGame.Turn import Turn
 
 
-class MyTestCase(unittest.TestCase):
-    def test_something(self):
+class test_turns(unittest.TestCase):
+    
+    self.  
+    def test_roll_dice(self):
         self.assertEqual(True, False)  # add assertion here
 
 
