@@ -6,8 +6,6 @@ from Human import Human
 from Highscores import Highscore
 
 
-
-
 def computer_mode_start(player_one, is_normal_mode, highscores_main):
     Displays.printBotMenu()
 
@@ -15,7 +13,9 @@ def computer_mode_start(player_one, is_normal_mode, highscores_main):
 
     if difficultyLevel in {"1", "2", "3"}:
         player_two = Computer(difficultyLevel)
-        pigGame = Game(player_one, player_two, is_normal_mode, highscores_main)  # starts a game with a username and difficulty lvl
+        pigGame = Game(
+            player_one, player_two, is_normal_mode, highscores_main
+        )  # starts a game with a username and difficulty lvl
         pigGame.start_game()
 
     elif difficultyLevel == "4":
@@ -24,13 +24,15 @@ def computer_mode_start(player_one, is_normal_mode, highscores_main):
     else:
         print("Enter a valid choice")
 
+
 def player_mode_start(player_one, is_normal_mode, highscores_main):
-    
+
     player2_name = input("Enter the name of player two: ")
     player_two = Human(player2_name)
 
     pigGame = Game(player_one, player_two, is_normal_mode, highscores_main)
     pigGame.start_game()
+
 
 def get_play_mode():
     while True:
@@ -42,13 +44,13 @@ def get_play_mode():
         else:
             print("Incorrect input")
 
+
 def main():
-    
-    is_normal_mode = get_play_mode() #
+
+    is_normal_mode = get_play_mode()  #
     player1_name = input("\nEnter the name of player one: ")
     player_one = Human(player1_name)
-    highscores_main = Highscore()          
-
+    highscores_main = Highscore()
 
     while True:
         Displays.printMenu()
@@ -75,5 +77,5 @@ def main():
                 print("Enter a valid choice!")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
