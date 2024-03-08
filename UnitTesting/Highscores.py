@@ -21,9 +21,7 @@ class Highscore:
         with open(self.filepath, "wb") as playerFile:
             pickle.dump(self.all_player_list, playerFile)
 
-    def load_scores(
-        self,
-    ):  # loads player to list, if empty EOF exception makes empty list
+    def load_scores(self):  # loads player to list, if empty EOF exception makes empty list
         try:
             with open(self.filepath, "rb") as playerFile:
                 self.all_player_list = pickle.load(playerFile)
