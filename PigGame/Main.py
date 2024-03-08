@@ -43,21 +43,20 @@ def get_play_mode():
 
 def main():
     
-    
+    is_normal_mode = get_play_mode() #
     player1_name = input("\nEnter the name of player one: ")
-    player_one = Human(player1_name)
+    player_one = Human(player1_name)               
+
 
     while True:
         Displays.printMenu()
         choice = input("Enter your choice (1 to 5): ")
 
         match choice:
-            case "1":               
-                is_normal_mode = get_play_mode()
+            case "1":
                 computer_mode_start(player_one, is_normal_mode)
 
-            case "2":                
-                is_normal_mode = get_play_mode()
+            case "2":
                 player_mode_start(player_one, is_normal_mode)
 
             case "3":

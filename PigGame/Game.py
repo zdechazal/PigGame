@@ -9,7 +9,7 @@ class Game:
         if normal_mode == True:
             self.winning_score = 40
         else:
-            self.winning_score = 10
+            self.winning_score = 15
 
 
     def start_game(self):
