@@ -1,5 +1,5 @@
-from Turn import Turn
-
+from PigGame.Turn import Turn
+ 
 
 class Game:
     def __init__(self, player_one, player_two, normal_mode, highscores_main):
