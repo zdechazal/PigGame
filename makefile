@@ -114,7 +114,7 @@ pdoc:
 pyreverse:
 	@$(call MESSAGE,$@)
 	install -d doc/pyreverse
-	pyreverse guess/*.py
+	pyreverse PigGame/*.py
 	dot -Tpng classes.dot -o doc/pyreverse/classes.png
 	dot -Tpng packages.dot -o doc/pyreverse/packages.png
 	rm -f classes.dot packages.dot
@@ -123,36 +123,36 @@ doc: pdoc pyreverse #pydoc sphinx
 
 
 
-# ---------------------------------------------------------
-# Calculate software metrics for your project.
-#
-radon-cc:
-	@$(call MESSAGE,$@)
-	radon cc --show-complexity --average guess
+# # ---------------------------------------------------------
+# # Calculate software metrics for your project.
+# #
+# radon-cc:
+# 	@$(call MESSAGE,$@)
+# 	radon cc --show-complexity --average guess
 
-radon-mi:
-	@$(call MESSAGE,$@)
-	radon mi --show guess
+# radon-mi:
+# 	@$(call MESSAGE,$@)
+# 	radon mi --show guess
 
-radon-raw:
-	@$(call MESSAGE,$@)
-	radon raw guess
+# radon-raw:
+# 	@$(call MESSAGE,$@)
+# 	radon raw guess
 
-radon-hal:
-	@$(call MESSAGE,$@)
-	radon hal guess
+# radon-hal:
+# 	@$(call MESSAGE,$@)
+# 	radon hal guess
 
-cohesion:
-	@$(call MESSAGE,$@)
-	cohesion --directory guess
+# cohesion:
+# 	@$(call MESSAGE,$@)
+# 	cohesion --directory guess
 
-metrics: radon-cc radon-mi radon-raw radon-hal cohesion
+# metrics: radon-cc radon-mi radon-raw radon-hal cohesion
 
 
 
-# ---------------------------------------------------------
-# Find security issues in your project.
-#
-bandit:
-	@$(call MESSAGE,$@)
-	bandit --recursive guess
+# # ---------------------------------------------------------
+# # Find security issues in your project.
+# #
+# bandit:
+# 	@$(call MESSAGE,$@)
+# 	bandit --recursive guess
