@@ -10,21 +10,26 @@ class Game:
         self.player_two = player_two
         self.highscores_main = highscores_main
         if normal_mode == True:
-            self.winning_score = 40
+            self.winning_score = 100
         else:
-            self.winning_score = 15
+            self.winning_score = 30
 
     def start_game(self):
         player = self.player_one
         while True:
+            #starts a new player's turn to roll
             turn = Turn(player, self.winning_score)
-            turn_result = turn.play_turn()  # starts a player's turn
-            if turn_result == -1:  # player quit the game
+            # starts a player's turn
+            turn_result = turn.play_turn()
+            # player quits the game when play_turn returns -1
+            if turn_result == -1:
                 self.reset_game_score()
                 break
             player.number_of_turns += 1
             player.game_score += turn_result
             print(f"{player.username} has {player.game_score} total points")
+            # if player won, it checks if this turn is a highscore for player
+            # adds the player object to the persistent highscore list
             if self.has_won(player) == True:
                 self.check_if_player_highscore(player)
                 self.highscores_main.add_player_to_list(player)

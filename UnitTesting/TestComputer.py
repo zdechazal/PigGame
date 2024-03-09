@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from Computer import Computer
+from PigGame.Computer import Computer
 
 
 class TestComputer(unittest.TestCase):

@@ -15,8 +15,11 @@ class Displays:
         |                                                                                                                 |
         | The first player to score 100 or more points wins.                                                              |
         |                                                                                                                 |
-        | (wikipedia reference)                                                                                           |
+        | Cheat mode allows the first player to score 30 to win.                                                          |
         |                                                                                                                 |
+        | To roll press r                                                                                                 |
+        | To hold press h                                                                                                 |
+        | To exit mid game, press q                                                                                       |
         │ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - |
             """
         print(rules)
@@ -64,3 +67,10 @@ class Displays:
         | 3. Back                   │
         │ - - - - - - - - - - - - - │"""
         print(player_menu)
+
+    @staticmethod
+    def printHighscoreHeader():
+        print("\n│ - - - - - - - - - - - - - - -│")
+        print("│          Highscores          │")
+        print("│ - - - - - - - - - - - - - - -│")
+        print("|                              |")

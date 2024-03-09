@@ -7,7 +7,7 @@ class Human:
         self.number_of_turns = 0
 
     def is_rolling(self):
-        decision = input("Press r to roll or h to hold: ")
+        decision = input("Roll or hold? ")
         if decision == "r":
             return "r"
         elif decision == "h":
@@ -16,7 +16,12 @@ class Human:
         elif decision == "q":
             return "q"
         else:
-            print("Enter valid input!")
+            print("""
+                  Invalid input! Enter:
+                  r to roll 
+                  h to hold
+                  q to quit \n""")
+            return self.is_rolling()
 
     def change_username(self, new_username):
         self.username = new_username

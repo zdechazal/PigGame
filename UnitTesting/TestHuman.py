@@ -1,5 +1,5 @@
 import unittest
-from Human import Human
+from PigGame.Human import Human
 from unittest.mock import patch
 
 
