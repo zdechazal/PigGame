@@ -1,6 +1,9 @@
 import pickle
 
-
+"""
+Highscore Class: Takes the players and sorts them out then displays them in proper order,
+also it saves and loads scores
+"""
 class Highscore:
     def __init__(self, normal_mode):
         self.all_player_list = []
