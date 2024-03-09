@@ -104,12 +104,12 @@ test: lint coverage
 pydoc:
 	@$(call MESSAGE,$@)
 	install -d doc/pydoc
-	$(PYTHON) -m pydoc -w guess/*.py
+	$(PYTHON) -m pydoc -w PigGame/*.py
 	mv *.html doc/pydoc
 
 pdoc:
 	@$(call MESSAGE,$@)
-	pdoc --force --html --output-dir doc/pdoc guess/*.py
+	pdoc --force --html --output-dir doc/pdoc PigGame/*.py
 
 pyreverse:
 	@$(call MESSAGE,$@)
