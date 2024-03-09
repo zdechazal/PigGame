@@ -1,15 +1,15 @@
 import unittest
 from unittest.mock import MagicMock
 from PigGame.Game import Game
-from PigGame.Human import Human
+from PigGame import Human
 from PigGame.Computer import Computer
 from PigGame.Highscores import Highscore
 
 class TestGame(unittest.TestCase):
     def setUp(self):
-        self.player_one = Human("Alice")
+        self.player_one = Human.Human("Alice")
         self.player_two = Computer(1)
-        self.highscores_main = Highscore()
+        self.highscores_main = Highscore(True)
         self.game = Game(self.player_one, self.player_two, True, self.highscores_main)
 
     def test_switch_player(self):
@@ -19,7 +19,7 @@ class TestGame(unittest.TestCase):
     def test_has_won(self):
         self.assertFalse(self.game.has_won(self.player_one))
         self.assertFalse(self.game.has_won(self.player_two))
-        self.player_one.game_score = 40
+        self.player_one.game_score = 100
         self.assertTrue(self.game.has_won(self.player_one))
 
     def test_check_if_player_highscore(self):
