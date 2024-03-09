@@ -2,6 +2,7 @@ import pickle
 
 from PigGame import Human 
 
+
 class Highscore:
     def __init__(self, normal_mode):
         self.all_player_list = list()

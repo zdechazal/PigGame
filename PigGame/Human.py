@@ -1,3 +1,8 @@
+"""
+Human class: A class for human player
+can make decision to hold roll cheat or quit the game,
+can change name
+"""
 class Human:
     def __init__(self, username):
         self.username = username

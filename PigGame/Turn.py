@@ -1,6 +1,9 @@
 from random import randint
 
-
+"""
+Turn class: Class for each separate turn per game, has dice in it for rolling
+Logic for each turn is in this class
+"""
 class Turn:
     def __init__(self, player, winning_score):
         self.winning_score = winning_score
