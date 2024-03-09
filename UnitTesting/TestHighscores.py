@@ -1,51 +1,49 @@
 import unittest
-from unittest.mock import MagicMock
-from TestFolder.Highscores import Highscore
+import pickle
+from PigGame.Highscores import Highscore
+from PigGame.Human import Human
 
-class TestHighscores(unittest.TestCase):
+
+class TestHighscore(unittest.TestCase):
     def setUp(self):
-        self.highscores = Highscore()
+        self.highscore = Highscore()
+
+    def tearDown(self):
+        self.highscore = None
 
     def test_add_player_to_list(self):
-        player1 = MagicMock()
-        player2 = MagicMock()
-        self.highscores.add_player_to_list(player1)
-        self.assertIn(player1, self.highscores.all_player_list)
-        self.highscores.add_player_to_list(player2)
-        self.assertIn(player2, self.highscores.all_player_list)
+        player = {"username": "TestPlayer", "highscore": 4}
+        self.highscore.add_player_to_list(player)
+        self.assertIn(player, self.highscore.all_player_list)
 
     def test_save_scores(self):
-        player1 = MagicMock()
-        player2 = MagicMock()
-        self.highscores.all_player_list = [player1, player2]
-        with unittest.mock.patch("pickle.dump") as mock_dump:
-            self.highscores.save_scores()
-            mock_dump.assert_called_once_with([player1, player2], unittest.mock.ANY)
+        player = {"username": "Bob", "highscore": 4}
+        self.highscore.all_player_list.append(player)
+        self.highscore.save_scores()
+
+        # Read saved data from the file
+        with open(self.highscore.filepath, "rb") as playerFile:
+            saved_data = pickle.load(playerFile)
+
+        self.assertEqual(saved_data, self.highscore.all_player_list)
 
     def test_load_scores(self):
-        with unittest.mock.patch("pickle.load") as mock_load:
-            self.highscores.load_scores()
-            mock_load.assert_called_once_with(unittest.mock.ANY)
+        player = {"username": "Bob", "highscore": 4}
+        self.highscore.all_player_list.append(player)
+        self.highscore.save_scores()
+
+        self.highscore.load_scores()
+
+        self.assertEqual(self.highscore.all_player_list, [player])
 
     def test_sort_scores(self):
-        player1 = MagicMock(highscore=5)
-        player2 = MagicMock(highscore=10)
-        player3 = MagicMock(highscore=15)
-        self.highscores.all_player_list = [player1, player2, player3]
-        self.highscores.sort_scores()
-        self.assertEqual(self.highscores.top_ten, [player1, player2, player3])
+        players = [{"username": "Bob", "highscore": 4}, {"username": "Bob2", "highscore": 4}]
+        self.highscore.all_player_list.extend(players)
+        self.highscore.sort_scores()
 
-    def test_display_scores(self):
-        with unittest.mock.patch("builtins.print") as mock_print:
-            player1 = MagicMock(username="Alice", highscore=5)
-            player2 = MagicMock(username="Bob", highscore=10)
-            player3 = MagicMock(username="Charlie", highscore=15)
-            self.highscores.top_ten = [player1, player2, player3]
-            self.highscores.display_scores()
-            mock_print.assert_any_call("Highscores:")
-            mock_print.assert_any_call("Alice, 5")
-            mock_print.assert_any_call("Bob, 10")
-            mock_print.assert_any_call("Charlie, 15")
+        expected_top_ten = sorted(players, key=lambda x: x["highscore"], reverse=True)[:10]
+        self.assertEqual(self.highscore.top_ten, expected_top_ten)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import MagicMock
-from TestFolder.Turn import Turn
+from PigGame.Turn import Turn
 
 
 class TestTurn(unittest.TestCase):

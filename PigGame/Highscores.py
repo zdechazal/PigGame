@@ -1,5 +1,4 @@
 import pickle
-import Displays
 
 
 class Highscore:
@@ -45,7 +44,10 @@ class Highscore:
     # used to print scores
     def display_scores(self):
         self.sort_scores()
-        Displays.Displays.printHighscoreHeader()
+        print("\n│ - - - - - - - - - - - - - - -│")
+        print("│          Highscores          │")
+        print("│ - - - - - - - - - - - - - - -│")
+        print("|                              |")
         for player in self.top_ten:
             print(f"|  {player.username:20}  {player.highscore:^5} |")
         print("│ - - - - - - - - - - - - - - -│")

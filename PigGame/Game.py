@@ -1,7 +1,4 @@
 from Turn import Turn
-from Human import Human
-from Computer import Computer
-from Highscores import Highscore
 
 
 class Game:

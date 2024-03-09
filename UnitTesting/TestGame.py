@@ -1,9 +1,9 @@
 import unittest
 from unittest.mock import MagicMock
-from TestFolder.Game import Game
-from TestFolder.Human import Human
-from TestFolder.Computer import Computer
-from TestFolder.Highscores import Highscore
+from PigGame.Game import Game
+from PigGame.Human import Human
+from PigGame.Computer import Computer
+from PigGame.Highscores import Highscore
 
 class TestGame(unittest.TestCase):
     def setUp(self):
