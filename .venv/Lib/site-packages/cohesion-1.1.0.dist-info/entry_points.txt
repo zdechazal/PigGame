@@ -1,0 +1,5 @@
+[console_scripts]
+cohesion = cohesion.__main__:main
+
+[flake8.extension]
+H60 = cohesion.flake8_extension:CohesionChecker

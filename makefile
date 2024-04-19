@@ -122,38 +122,37 @@ pyreverse:
 
 doc: pdoc pyreverse pydoc sphinx
 
+metrics: radon-cc radon-mi radon-raw radon-hal cohesion bandit
+
+radon-cc:
+
+	@$(call MESSAGE,$@)
+	radon cc --show-complexity --average PigGame
+
+radon-mi:
+
+	@$(call MESSAGE,$@)
+	radon mi --show PigGame
+
+radon-raw:
+
+	@$(call MESSAGE,$@)
+	radon raw PigGame
+
+radon-hal:
+
+	@$(call MESSAGE,$@)
+	radon hal PigGame
+
+cohesion:
+
+	@$(call MESSAGE,$@)
+	cohesion --directory PigGame
+
+metrics: radon-cc radon-mi radon-raw radon-hal cohesion
 
 
-# # ---------------------------------------------------------
-# # Calculate software metrics for your project.
-# #
-# radon-cc:
-# 	@$(call MESSAGE,$@)
-# 	radon cc --show-complexity --average guess
+bandit:
 
-# radon-mi:
-# 	@$(call MESSAGE,$@)
-# 	radon mi --show guess
-
-# radon-raw:
-# 	@$(call MESSAGE,$@)
-# 	radon raw guess
-
-# radon-hal:
-# 	@$(call MESSAGE,$@)
-# 	radon hal guess
-
-# cohesion:
-# 	@$(call MESSAGE,$@)
-# 	cohesion --directory guess
-
-# metrics: radon-cc radon-mi radon-raw radon-hal cohesion
-
-
-
-# # ---------------------------------------------------------
-# # Find security issues in your project.
-# #
-# bandit:
-# 	@$(call MESSAGE,$@)
-# 	bandit --recursive guess
+	@$(call MESSAGE,$@)
+	bandit --recursive PigGame
