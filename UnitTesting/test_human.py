@@ -19,19 +19,20 @@ class TestHuman(unittest.TestCase):
 
     def test_is_rolling(self):
         # Test when the decision is "r"
-        with unittest.mock.patch('builtins.input', return_value='r'):
+        with unittest.mock.patch("builtins.input", return_value="r"):
             result = self.player.is_rolling()
         self.assertEqual(result, "r")
 
         # Test when the decision is "h"
-        with unittest.mock.patch('builtins.input', return_value='h'):
+        with unittest.mock.patch("builtins.input", return_value="h"):
             result = self.player.is_rolling()
         self.assertEqual(result, "h")
 
         # Test when the decision is "q"
-        with unittest.mock.patch('builtins.input', return_value='q'):
+        with unittest.mock.patch("builtins.input", return_value="q"):
             result = self.player.is_rolling()
         self.assertEqual(result, "q")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

@@ -1,6 +1,8 @@
 """
 Display class: Most of the print statements are stored in display
 """
+
+
 class Displays:
 
     @staticmethod
@@ -16,7 +18,7 @@ class Displays:
         | If the player rolls any other number, it is added to their turn total and the player's turn continues.          |
         | If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn. |
         |                                                                                                                 |
-        | The first player to score 100 or more points wins.                                                              |
+        | The first player to score 100 or more points wins.   (Wikipedia)                                                           |
         |                                                                                                                 |
         | Cheat mode allows the first player to score 30 to win.                                                          |
         |                                                                                                                 |

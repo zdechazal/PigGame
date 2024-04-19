@@ -24,19 +24,19 @@ class TestTurn(unittest.TestCase):
         self.assertFalse(self.turn.is_one(5))
         self.assertFalse(self.turn.is_one(6))
 
-
-
     def test_play_turn_quit(self):
         # Mocking player's is_rolling method to return 'q' to simulate quitting
-        self.player.is_rolling.return_value = 'q'
+        self.player.is_rolling.return_value = "q"
         self.assertEqual(self.turn.play_turn(), -1)  # Player quits, return -1
 
     def test_play_turn_rolls_one(self):
         # Mocking player's is_rolling method to return 'r' every time, but the roll is always 1
-        self.player.is_rolling.return_value = 'r'
+        self.player.is_rolling.return_value = "r"
         self.turn.roll_dice = MagicMock(return_value=1)
-        self.assertEqual(self.turn.play_turn(), 0)  # Player rolls a 1, turn total becomes 0
+        self.assertEqual(
+            self.turn.play_turn(), 0
+        )  # Player rolls a 1, turn total becomes 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

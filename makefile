@@ -66,7 +66,8 @@ pylint:
 
 flake8:
 	@$(call MESSAGE,$@)
-	-flake8
+	-flake8 --exclude=PigGame/Displays.py,UnitTesting,.venv
+
 
 lint: flake8 pylint
 
@@ -119,7 +120,7 @@ pyreverse:
 	dot -Tpng packages.dot -o doc/pyreverse/packages.png
 	rm -f classes.dot packages.dot
 
-doc: pdoc pyreverse #pydoc sphinx
+doc: pdoc pyreverse pydoc sphinx
 
 
 
