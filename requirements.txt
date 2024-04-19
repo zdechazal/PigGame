@@ -1,5 +1,5 @@
 # Code analysis
-bandit
+# bandit
 #cohesion
 flake8
 flake8-docstrings
