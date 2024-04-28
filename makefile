@@ -127,33 +127,34 @@ doc: pdoc pyreverse pydoc sphinx
 # # ---------------------------------------------------------
 # # Calculate software metrics for your project.
 # #
-# radon-cc:
-# 	@$(call MESSAGE,$@)
-# 	radon cc --show-complexity --average guess
+radon-cc:
+	@$(call MESSAGE,$@)
+	radon cc --show-complexity --average .
 
-# radon-mi:
-# 	@$(call MESSAGE,$@)
-# 	radon mi --show guess
+radon-mi:
+	@$(call MESSAGE,$@)
+	radon mi --show .
 
-# radon-raw:
-# 	@$(call MESSAGE,$@)
-# 	radon raw guess
+radon-raw:
+	@$(call MESSAGE,$@)
+	radon raw .
 
-# radon-hal:
-# 	@$(call MESSAGE,$@)
-# 	radon hal guess
+radon-hal:
+	@$(call MESSAGE,$@)
+	radon hal .
 
-# cohesion:
-# 	@$(call MESSAGE,$@)
-# 	cohesion --directory guess
+cohesion:
+	@$(call MESSAGE,$@)
+	cohesion --directory .
 
-# metrics: radon-cc radon-mi radon-raw radon-hal cohesion
+metrics: radon-cc radon-mi radon-raw radon-hal cohesion
 
 
 
-# # ---------------------------------------------------------
-# # Find security issues in your project.
-# #
-# bandit:
-# 	@$(call MESSAGE,$@)
-# 	bandit --recursive guess
+# ---------------------------------------------------------
+# Find security issues in your project.
+#
+bandit:
+	@$(call MESSAGE,$@)
+	bandit --recursive .
+
